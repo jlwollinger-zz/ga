@@ -32,10 +32,10 @@ def fitness(cromossomos):
             cromossomos[i, j] = math.sqrt((pow(cromossomos[i + 1] - cromossomos[j]), 2) + (pow(cromossomos[i + 1] - cromossomos[j]))) 
     #dcidade(i,j)=sqrt((x(i)-x(j))^2+(y(i)-y(j))^2)
 
-
 def selecao(cromossomos):
-
-    #cromossomos = sorted(cromossomos)
+    cromossomos.sort(key=lambda x: cromossomos.aptidao)
+    for x in range(10):
+        cromossomos.pop()
     return cromossomos
 
 def crossover(cromossomos):
