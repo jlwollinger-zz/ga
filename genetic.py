@@ -18,10 +18,11 @@ def main(cromossomos):
 
 
 def fitness(cromossomos):
-    x, y = 0
-    cromossomos[20, x] = math.sqrt((pow(cromossomos[x + 1] - cromossomos[x]), 2) + (pow(cromossomos[y + 1] - cromossomos[y]))) 
+    for i in range(0, 20):
+        for j in range(0, 20):
+            cromossomos[i, j] = math.sqrt((pow(cromossomos[i + 1] - cromossomos[j]), 2) + (pow(cromossomos[i + 1] - cromossomos[j]))) 
+    #dcidade(i,j)=sqrt((x(i)-x(j))^2+(y(i)-y(j))^2)
 
-    return cromossomos
 
 def selecao(cromossomos):
 
