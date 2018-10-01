@@ -1,17 +1,26 @@
 import numpy as np
 import math   # This will import math module
+from cromossomo import Cromossomo
+from cromossomo import CromossomoFactory
 
-populacao = 20
-cromossomos = []
+tamanhoPopulacao = 20
+populacao = []
 geracoes = 10000
 
 if '__name__' == '__main__':
     main(cromossomos)
 
+for i in range (0, tamanhoPopulacao):
+    populacao.append(CromossomoFactory.build())
 
-def main(cromossomos):
+for cr in populacao:
+    print(cr.genes)
+
+
+def main():
+    cromossomos = generateCromossomos()
     for i in range(0, geracoes):
-        cromossomos = fitness(cromossomos) #preencher a útlima coluna de aptidão
+        #cromossomos = fitness(cromossomos) #preencher a útlima coluna de aptidão
         cromossomos = selecao(cromossomos) #fazer o sort e selecionar os 10 primeiros
         cromossomos = crossover(cromossomos) #fazer o crossover
         cromossomos = mutacao(cromossomos) #sortear algum cromossomo para mutar
