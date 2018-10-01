@@ -1,11 +1,15 @@
-
+import numpy as np
 
 populacao = 20
 agentes = []
 geracoes = 10000
 
 
-def main():
+if '__name__' == '__main__':
+    main(agentes)
+
+
+def main(agentes):
     for i in range(0, geracoes):
         agentes = fitness(agentes) #preencher a útlima coluna de aptidão
         agentes = selecao(agentes) #fazer o sort e selecionar os 10 primeiros
@@ -20,7 +24,7 @@ def fitness(agentes):
 
 def selecao(agentes):
 
-        #agentes = sorted(agentes)
+    #agentes = sorted(agentes)
     return agentes
 
 def crossover(agentes):
