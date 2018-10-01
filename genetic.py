@@ -5,7 +5,6 @@ populacao = 20
 cromossomos = []
 geracoes = 10000
 
-
 if '__name__' == '__main__':
     main(cromossomos)
 
@@ -16,7 +15,6 @@ def main(cromossomos):
         cromossomos = selecao(cromossomos) #fazer o sort e selecionar os 10 primeiros
         cromossomos = crossover(cromossomos) #fazer o crossover
         cromossomos = mutacao(cromossomos) #sortear algum cromossomo para mutar
-
 
 
 def fitness(cromossomos):
