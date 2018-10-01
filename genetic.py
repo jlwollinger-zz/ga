@@ -8,16 +8,16 @@ tamanhoPopulacao = 20
 populacao = []
 geracoes = 10000
 
-def generateCromossomos():
+def generatepopulacao():
     for i in range (0, tamanhoPopulacao):
         populacao.append(CromossomoFactory().build())
     return populacao
 
-print(generateCromossomos())
+print(generatepopulacao())
 def main():
-    populacao = generateCromossomos()
+    populacao = generatepopulacao()
     for i in range(0, geracoes):
-        #cromossomos = fitness(cromossomos) #preencher a útlima coluna de aptidão
+        #populacao = fitness(populacao) #preencher a útlima coluna de aptidão
         populacao = selecao(populacao) #fazer o sort e selecionar os 10 primeiros
         populacao = crossover(populacao) #fazer o crossover
         populacao = mutacao(populacao) #sortear algum cromossomo para mutar
@@ -25,22 +25,22 @@ def main():
     #plotar gráfico
 
 
-def fitness(cromossomos):
+def fitness(populacao):
     for i in range(0, 20):
         for j in range(0, 20):
-            cromossomos[i, j] = math.sqrt((pow(cromossomos[i + 1] - cromossomos[j]), 2) + (pow(cromossomos[i + 1] - cromossomos[j]))) 
+            populacao[i, j] = math.sqrt((pow(populacao[i + 1] - populacao[j]), 2) + (pow(populacao[i + 1] - populacao[j]))) 
     #dcidade(i,j)=sqrt((x(i)-x(j))^2+(y(i)-y(j))^2)
 
-def selecao(cromossomos):
-    cromossomos.sort(key=lambda x: cromossomos.aptidao)
+def selecao(populacao):
+    populacao.sort(key=lambda x: populacao.aptidao)
     for x in range(10):
-        cromossomos.pop()
-    return cromossomos
+        populacao.pop()
+    return populacao
 
-def crossover(cromossomos):
+def crossover(populacao):
     metade = 10
     
-    return cromossomos
+    return populacao
 
 
 def mutacao(populacao):
@@ -50,7 +50,7 @@ def mutacao(populacao):
         print("MUTEI") #O operador de mutação atua sobre cada membro da nova geração com probabilidade de 0,05
         for i in range(10, 20):
             
-        populacao[]
+        # populacao[]
 
     return populacao
 
