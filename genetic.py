@@ -1,4 +1,5 @@
 import numpy as np
+import math   # This will import math module
 
 populacao = 20
 agentes = []
@@ -19,7 +20,9 @@ def main(agentes):
 
 
 def fitness(agentes):
-    
+    x, y = 0
+    agentes[20, x] = math.sqrt((pow(agentes[x + 1] - agentes[x]), 2) + (pow(agentes[y + 1] - agentes[y]))) 
+
     return agentes
 
 def selecao(agentes):
