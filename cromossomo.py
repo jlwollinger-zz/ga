@@ -6,7 +6,8 @@ class Cromossomo:
     
 
 class CromossomoFactory:
-
+    
+    @staticmethod
     def build():
         crom = Cromossomo
         crom.genes =  np.random.uniform(low=00, high=1, size=(20,))#random.sample(range(1 , 1000), 20)

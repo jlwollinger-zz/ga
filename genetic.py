@@ -2,28 +2,27 @@ import numpy as np
 import math   # This will import math module
 from cromossomo import Cromossomo
 from cromossomo import CromossomoFactory
+from random import randrange
 
 tamanhoPopulacao = 20
 populacao = []
 geracoes = 10000
 
-if '__name__' == '__main__':
-    main(cromossomos)
+def generateCromossomos():
+    for i in range (0, tamanhoPopulacao):
+        populacao.append(CromossomoFactory().build())
+    return populacao
 
-for i in range (0, tamanhoPopulacao):
-    populacao.append(CromossomoFactory.build())
-
-for cr in populacao:
-    print(cr.genes)
-
-
+print(generateCromossomos())
 def main():
-    cromossomos = generateCromossomos()
+    populacao = generateCromossomos()
     for i in range(0, geracoes):
         #cromossomos = fitness(cromossomos) #preencher a útlima coluna de aptidão
-        cromossomos = selecao(cromossomos) #fazer o sort e selecionar os 10 primeiros
-        cromossomos = crossover(cromossomos) #fazer o crossover
-        cromossomos = mutacao(cromossomos) #sortear algum cromossomo para mutar
+        populacao = selecao(populacao) #fazer o sort e selecionar os 10 primeiros
+        populacao = crossover(populacao) #fazer o crossover
+        populacao = mutacao(populacao) #sortear algum cromossomo para mutar
+
+    #plotar gráfico
 
 
 def fitness(cromossomos):
@@ -39,10 +38,23 @@ def selecao(cromossomos):
     return cromossomos
 
 def crossover(cromossomos):
-
+    metade = 10
+    
     return cromossomos
 
 
-def mutacao(cromossomos):
+def mutacao(populacao):
+    
+    prob = randrange(0,100)
+    if(prob < 5):
+        print("MUTEI") #O operador de mutação atua sobre cada membro da nova geração com probabilidade de 0,05
+        for i in range(10, 20):
+            
+        populacao[]
 
-    return cromossomos
+    return populacao
+
+
+
+
+main()
