@@ -45,12 +45,16 @@ def crossover(cromossomos):
 
 def mutacao(populacao):
     
-    prob = randrange(0,100)
-    if(prob < 5):
-        print("MUTEI") #O operador de mutação atua sobre cada membro da nova geração com probabilidade de 0,05
-        for i in range(10, 20):
+    prob = randrange(0, 100)
+    if(prob =< 5): #O operador de mutação atua sobre        
+        print("MUTEI") #cada membro da nova geração (10 últimos) com probabilidade de 0,05
+        for i in range(10, 20): 
+            geneX = randrange(0, 20) 
+            geneY = randrange(0, 20)
+            valorATrocar = populacao[i].cromossomo.genes[geneX]
+            populacao[i].cromossomo.genes[geneX] = populacao[i].cromossomo.genes[geneY]
+            populacao[i].cromossomo.genes[geneY] = valorATrocar
             
-        populacao[]
 
     return populacao
 
