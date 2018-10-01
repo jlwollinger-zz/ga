@@ -2,39 +2,39 @@ import numpy as np
 import math   # This will import math module
 
 populacao = 20
-agentes = []
+cromossomos = []
 geracoes = 10000
 
 
 if '__name__' == '__main__':
-    main(agentes)
+    main(cromossomos)
 
 
-def main(agentes):
+def main(cromossomos):
     for i in range(0, geracoes):
-        agentes = fitness(agentes) #preencher a útlima coluna de aptidão
-        agentes = selecao(agentes) #fazer o sort e selecionar os 10 primeiros
-        agentes = crossover(agentes) #fazer o crossover
-        agentes = mutacao(agentes) #sortear algum cromossomo para mutar
+        cromossomos = fitness(cromossomos) #preencher a útlima coluna de aptidão
+        cromossomos = selecao(cromossomos) #fazer o sort e selecionar os 10 primeiros
+        cromossomos = crossover(cromossomos) #fazer o crossover
+        cromossomos = mutacao(cromossomos) #sortear algum cromossomo para mutar
 
 
 
-def fitness(agentes):
+def fitness(cromossomos):
     x, y = 0
-    agentes[20, x] = math.sqrt((pow(agentes[x + 1] - agentes[x]), 2) + (pow(agentes[y + 1] - agentes[y]))) 
+    cromossomos[20, x] = math.sqrt((pow(cromossomos[x + 1] - cromossomos[x]), 2) + (pow(cromossomos[y + 1] - cromossomos[y]))) 
 
-    return agentes
+    return cromossomos
 
-def selecao(agentes):
+def selecao(cromossomos):
 
-    #agentes = sorted(agentes)
-    return agentes
+    #cromossomos = sorted(cromossomos)
+    return cromossomos
 
-def crossover(agentes):
+def crossover(cromossomos):
 
-    return agentes
+    return cromossomos
 
 
-def mutacao(agentes):
+def mutacao(cromossomos):
 
-    return agentes
+    return cromossomos
