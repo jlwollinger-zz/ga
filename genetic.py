@@ -44,10 +44,9 @@ def crossover(populacao):
         mae = populacao[randrange(0, 10)]
         filho1 = pai.acasalar(mae)
         filho2 = mae.acasalar(pai)
-        
+
         populacao[i + 10] = filho1
         populacao[i + 11] = filho2
-
 
     return populacao
      
