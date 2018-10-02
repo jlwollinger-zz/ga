@@ -32,7 +32,7 @@ def fitness(populacao):
     #dcidade(i,j)=sqrt((x(i)-x(j))^2+(y(i)-y(j))^2)
 
 def selecao(populacao):
-    populacao.sort(key=lambda x: populacao.aptidao)
+    populacao.sort(key=lambda x: x.aptidao)
     for x in range(10):
         populacao.pop()
     return populacao
@@ -42,8 +42,8 @@ def crossover(populacao):
     for i in range(0 , metade):
         pai = populacao[i]
         mae = populacao[randrange(0, 10)]
-        filho1 = pai.acasalar(mae)
-        filho2 = mae.acasalar(pai)
+        filho1 = pai.acasalar(pai, mae)
+        filho2 = mae.acasalar(mae, pai)
 
         populacao[i + 10] = filho1
         populacao[i + 11] = filho2
