@@ -53,7 +53,7 @@ def crossover(populacao):
 
 def mutacao(populacao):
     prob = randrange(0, 100)
-    if prob =< 5: #O operador de mutação atua sobre        
+    if prob <= 5: #O operador de mutação atua sobre        
         print("MUTEI") #cada membro da nova geração (10 últimos) com probabilidade de 0,05
         for i in range(10, 20): 
             geneX = randrange(0, 20) 
