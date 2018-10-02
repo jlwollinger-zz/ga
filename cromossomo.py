@@ -1,9 +1,17 @@
-import random
+from random import randrange
 import numpy as np
 class Cromossomo:
     genes = []
     aptidao = 0
     
+    def acasalar(self, mae):
+        filho = CromossomoFactory().build()
+        filho.genes = self.genes
+        for i in (0, 10): #10 trocas
+            n_troca = randrange(0, 20)
+            filho.genes[n_troca] = mae.genes[n_troca]
+        return filho
+
 
 class CromossomoFactory:
     

@@ -39,9 +39,18 @@ def selecao(populacao):
 
 def crossover(populacao):
     metade = 10
-    
-    return populacao
+    for i in range(0 , metade):
+        pai = populacao[i]
+        mae = populacao[randrange(0, 10)]
+        filho1 = pai.acasalar(mae)
+        filho2 = mae.acasalar(pai)
+        
+        populacao[i + 10] = filho1
+        populacao[i + 11] = filho2
 
+
+    return populacao
+     
 
 def mutacao(populacao):
     prob = randrange(0, 100)
