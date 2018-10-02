@@ -8,14 +8,14 @@ tamanhoPopulacao = 20
 populacao = []
 geracoes = 10000
 
-def generatepopulacao():
+def generatePopulacao():
     for i in range (0, tamanhoPopulacao):
         populacao.append(CromossomoFactory().build())
     return populacao
 
-print(generatepopulacao())
+print(generatePopulacao())
 def main():
-    populacao = generatepopulacao()
+    populacao = generatePopulacao()
     for i in range(0, geracoes):
         #populacao = fitness(populacao) #preencher a útlima coluna de aptidão
         populacao = selecao(populacao) #fazer o sort e selecionar os 10 primeiros
@@ -45,7 +45,7 @@ def crossover(populacao):
 
 def mutacao(populacao):
     prob = randrange(0, 100)
-    if(prob =< 5): #O operador de mutação atua sobre        
+    if prob =< 5: #O operador de mutação atua sobre        
         print("MUTEI") #cada membro da nova geração (10 últimos) com probabilidade de 0,05
         for i in range(10, 20): 
             geneX = randrange(0, 20) 
