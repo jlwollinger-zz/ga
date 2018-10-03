@@ -9,14 +9,14 @@ populacao = []
 geracoes = 10000
 
 def generatePopulacao():
-    for i in range (0, tamanhoPopulacao):
+    for _ in range (0, tamanhoPopulacao):
         populacao.append(CromossomoFactory().build())
     return populacao
 
 print(generatePopulacao())
 def main():
     populacao = generatePopulacao()
-    for i in range(0, geracoes):
+    for _ in range(0, geracoes):
         #populacao = fitness(populacao) #preencher a útlima coluna de aptidão
         populacao = selecao(populacao) #fazer o sort e selecionar os 10 primeiros
         populacao = crossover(populacao) #fazer o crossover
@@ -33,7 +33,7 @@ def fitness(populacao):
 
 def selecao(populacao):
     populacao.sort(key=lambda x: x.aptidao)
-    for x in range(10):
+    for _ in range(10):
         populacao.pop()
     return populacao
 
