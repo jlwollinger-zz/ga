@@ -13,7 +13,6 @@ def generatePopulacao():
         populacao.append(CromossomoFactory().build())
     return populacao
 
-print(generatePopulacao())
 def main():
     populacao = generatePopulacao()
     for _ in range(0, geracoes):
@@ -28,7 +27,7 @@ def main():
 def fitness(populacao):
     for i in range(0, 20):
         for j in range(0, 20):
-            populacao[i, j] = math.sqrt((pow(populacao[i + 1] - populacao[j]), 2) + (pow(populacao[i + 1] - populacao[j]))) 
+            populacao[i].aptidao = math.sqrt((pow(populacao[i].genes[i] - populacao[i].genes[j]), 2) + (pow(populacao[i].genes[j + 1] - populacao[j]))) 
     #dcidade(i,j)=sqrt((x(i)-x(j))^2+(y(i)-y(j))^2)
 
 def selecao(populacao):
