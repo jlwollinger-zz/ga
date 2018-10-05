@@ -3,10 +3,13 @@ import math   # This will import math module
 from cromossomo import Cromossomo
 from cromossomo import CromossomoFactory
 from random import randrange
+from matplotlib import pyplot as plt
 
 tamanhoPopulacao = 20
 populacao = []
 geracoes = 10000
+ULTIMO_GENE = 20
+
 
 def generatePopulacao():
     for _ in range (0, tamanhoPopulacao):
@@ -21,14 +24,26 @@ def main():
         populacao = crossover(populacao) #fazer o crossover
         populacao = mutacao(populacao) #sortear algum cromossomo para mutar
 
+    plt.plot()
     #plotar gráfico
 
 
-def fitness(populacao):
-    for i in range(0, 20):
-        for j in range(0, 20):
-            populacao[i].aptidao = math.sqrt((pow(populacao[i].genes[i] - populacao[i].genes[j]), 2) + (pow(populacao[i].genes[j + 1] - populacao[j]))) 
-    #dcidade(i,j)=sqrt((x(i)-x(j))^2+(y(i)-y(j))^2)
+def fitness(self, populacao):
+    for x in range(0, 20):
+        distancias = []
+        cromossomoIterado = populacao[x]
+        for i in range(0, 20):
+            cromossomoIterado.gene[ULTIMO_GENE] = cromossomoIterado.gene[i] #o último tem que ser igual ao primeiro para fechar o clico
+            for j in range(0, 20):
+                distancias[i][j] = cromossomoIterado.genes[i] - cromossomoIterado.genes[j]
+
+        distanciaCromossomo = []
+        for i in range(0,20):
+            for j in range(0,20):
+                distanciaCromossomo[i] += distancias[i][j]
+
+        distanciaCromossomo.sort(key=lambda x: x)                            
+        cromossomoIterado.aptidao = distanciaCromossomo[0] 
 
 def selecao(populacao):
     populacao.sort(key=lambda x: x.aptidao)
@@ -48,7 +63,7 @@ def crossover(populacao):
         populacao[i + 11] = filho2
 
     return populacao
-     
+
 
 def mutacao(populacao):
     prob = randrange(0, 100)

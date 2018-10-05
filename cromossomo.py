@@ -20,4 +20,5 @@ class CromossomoFactory:
         crom = Cromossomo()
         crom.genes =  np.random.uniform(low=00, high=1, size=(20,))#random.sample(range(1 , 1000), 20)
         crom.aptidao = 0
+        crom.genes[20] = crom.genes[0]
         return crom
