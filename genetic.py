@@ -19,7 +19,7 @@ def generatePopulacao():
 def main():
     populacao = generatePopulacao()
     for _ in range(0, geracoes):
-        #populacao = fitness(populacao) #preencher a útlima coluna de aptidão
+        populacao = fitness(populacao) #preencher a útlima coluna de aptidão
         populacao = selecao(populacao) #fazer o sort e selecionar os 10 primeiros
         populacao = crossover(populacao) #fazer o crossover
         populacao = mutacao(populacao) #sortear algum cromossomo para mutar
@@ -28,27 +28,30 @@ def main():
     #plotar gráfico
 
 
-def fitness(self, populacao):
+def fitness(populacao):
     for x in range(0, 20):
-        distancias = []
+        distancias = [[0 for x in range(20)] for y in range(20)] 
         cromossomoIterado = populacao[x]
         for i in range(0, 20):
-            cromossomoIterado.gene[ULTIMO_GENE] = cromossomoIterado.gene[i] #o último tem que ser igual ao primeiro para fechar o clico
+            cromossomoIterado.genes[ULTIMO_GENE] = cromossomoIterado.genes[i] #o último tem que ser igual ao primeiro para fechar o clico
             for j in range(0, 20):
                 distancias[i][j] = cromossomoIterado.genes[i] - cromossomoIterado.genes[j]
 
-        distanciaCromossomo = []
+        distanciaCromossomo = [0 for x in range(20)]
         for i in range(0,20):
             for j in range(0,20):
                 distanciaCromossomo[i] += distancias[i][j]
 
         distanciaCromossomo.sort(key=lambda x: x)                            
-        cromossomoIterado.aptidao = distanciaCromossomo[0] 
+        cromossomoIterado.aptidao = distanciaCromossomo[0]
+
+
+    return populacao
 
 def selecao(populacao):
     populacao.sort(key=lambda x: x.aptidao)
-    for _ in range(10):
-        populacao.pop()
+    #for _ in range(10):
+        #populacao.pop()
     return populacao
 
 def crossover(populacao):
@@ -56,8 +59,10 @@ def crossover(populacao):
     for i in range(0 , metade):
         pai = populacao[i]
         mae = populacao[randrange(0, 10)]
-        filho1 = pai.acasalar(pai, mae)
-        filho2 = mae.acasalar(mae, pai)
+        filho1 = pai.crossover(mae)
+        print(filho1.genes)
+        print(pai.genes)
+        filho2 = mae.crossover(pai)
 
         populacao[i + 10] = filho1
         populacao[i + 11] = filho2
