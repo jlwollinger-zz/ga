@@ -7,11 +7,12 @@ class Cromossomo:
     def crossover(self, mae):
         filho = CromossomoFactory().build()
         filho.genes = self.genes
-        for _ in (0, 10): #10 trocas
+        for _ in range(0, 10): #10 trocas
             n_troca = randrange(0, 20)
             filho.genes[n_troca] = mae.genes[n_troca]
-            print(filho.genes[n_troca])
-            print(mae.genes[n_troca])
+            #print(filho.genes[n_troca])
+            #print(mae.genes[n_troca])
+
         return filho
 
 

@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 
 tamanhoPopulacao = 20
 populacao = []
-geracoes = 10000
+geracoes = 10#000
 ULTIMO_GENE = 20
 
 
@@ -24,7 +24,10 @@ def main():
         populacao = crossover(populacao) #fazer o crossover
         populacao = mutacao(populacao) #sortear algum cromossomo para mutar
 
-    plt.plot()
+    print(populacao)
+
+    plt.plot(populacao[0].genes, '-ok')
+    plt.show()
     #plotar gráfico
 
 
@@ -55,15 +58,16 @@ def selecao(populacao):
     return populacao
 
 def crossover(populacao):
-    metade = 10
-    for i in range(0 , metade):
+    metade_da_metade = 5
+    for i in range(0 , metade_da_metade):
         pai = populacao[i]
         mae = populacao[randrange(0, 10)]
         filho1 = pai.crossover(mae)
-        print(filho1.genes)
-        print(pai.genes)
+        #print(filho1.genes)
+        #print(pai.genes)
         filho2 = mae.crossover(pai)
-
+        #print(filho2.genes)
+        #print(mae.genes)
         populacao[i + 10] = filho1
         populacao[i + 11] = filho2
 
@@ -77,9 +81,9 @@ def mutacao(populacao):
         for i in range(10, 20): 
             geneX = randrange(0, 20) 
             geneY = randrange(0, 20)
-            valorATrocar = populacao[i].cromossomo.genes[geneX]
-            populacao[i].cromossomo.genes[geneX] = populacao[i].cromossomo.genes[geneY]
-            populacao[i].cromossomo.genes[geneY] = valorATrocar
+            valor_a_trocar = populacao[i].genes[geneX]
+            populacao[i].genes[geneX] = populacao[i].genes[geneY]
+            populacao[i].genes[geneY] = valor_a_trocar
     return populacao
 
 
