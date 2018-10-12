@@ -7,8 +7,9 @@ from matplotlib import pyplot as plt
 
 tamanhoPopulacao = 20
 populacao = []
-geracoes = 10#000
+geracoes = 1000#0
 ULTIMO_GENE = 20
+Taxa_de_mutacao = 0
 
 
 def generatePopulacao():
@@ -24,7 +25,12 @@ def main():
         populacao = crossover(populacao) #fazer o crossover
         populacao = mutacao(populacao) #sortear algum cromossomo para mutar
 
-    print(populacao)
+    
+    print("Tamanho da populução: ", len(populacao))
+    print("Taxa de mutação: ", Taxa_de_mutacao)
+    print("Número de cidades: ", len(populacao[0].genes))
+    print("Melhor custo: ", populacao[0].aptidao)
+    print("Melhor solução:", populacao[0].genes)
 
     plt.plot(populacao[0].genes, '-ok')
     plt.show()
@@ -59,12 +65,14 @@ def selecao(populacao):
 
 def crossover(populacao):
     metade_da_metade = 5
-    for i in range(0 , metade_da_metade):
+    for i in range(0, metade_da_metade):
         pai = populacao[i]
         mae = populacao[randrange(0, 10)]
         filho1 = pai.crossover(mae)
         #print(filho1.genes)
+        
         #print(pai.genes)
+        
         filho2 = mae.crossover(pai)
         #print(filho2.genes)
         #print(mae.genes)
@@ -76,7 +84,9 @@ def crossover(populacao):
 
 def mutacao(populacao):
     prob = randrange(0, 100)
-    if prob <= 5: #O operador de mutação atua sobre        
+    if prob <= 5: #O operador de mutação atua sobre     
+        global Taxa_de_mutacao   
+        Taxa_de_mutacao = Taxa_de_mutacao + 1
         print("MUTEI") #cada membro da nova geração (10 últimos) com probabilidade de 0,05
         for i in range(10, 20): 
             geneX = randrange(0, 20) 
