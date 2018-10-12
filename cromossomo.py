@@ -8,7 +8,7 @@ class Cromossomo:
         filho = CromossomoFactory().build()
         filho.genes = self.genes
         for _ in range(0, 10): #10 trocas
-            n_troca = randrange(0, 20)
+            n_troca = randrange(1, 19) #Não troca-se o primeiro nem o último
             filho.genes[n_troca] = mae.genes[n_troca]
             #print(filho.genes[n_troca])
             #print(mae.genes[n_troca])
