@@ -75,7 +75,7 @@ def crossover(populacao):
         #print(pai.genes)
         
         filho2 = Cromossomo()
-        filho2 = mae.crossover(pai)
+        filho2.genes = mae.crossover(pai)
         #print(filho2.genes)
         #print(mae.genes)
         populacao[i + 10] = filho1

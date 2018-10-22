@@ -5,7 +5,7 @@ class Cromossomo:
     aptidao = 0
     
     def crossover(self, mae):
-        genes = [0 for x in range(20)]
+        genes = [0 for x in range(21)]
         for _ in range(0, 10): #10 trocas
             n_troca = randrange(1, 19) #Não troca-se o primeiro nem o último
             genes[n_troca] = mae.genes[n_troca]
