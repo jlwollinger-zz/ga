@@ -4,6 +4,7 @@ from cromossomo import Cromossomo
 from cromossomo import CromossomoFactory
 from random import randrange
 from matplotlib import pyplot as plt
+from matplotlib.path import Path
 
 tamanhoPopulacao = 20
 populacao = []
@@ -67,7 +68,8 @@ def crossover(populacao):
     for i in range(0, metade_da_metade):
         pai = populacao[i]
         mae = populacao[randrange(0, 10)]
-        filho1 = pai.crossover(mae) #TODO: filho está ficanco igual ao pai. Não consegui descobrir ainda o porque
+        filho1 = Cromossomo
+        filho1.genes = pai.crossover(mae) #TODO: filho está ficanco igual ao pai. Não consegui descobrir ainda o porque
         #print(filho1.genes)
         
         #print(pai.genes)

@@ -5,15 +5,15 @@ class Cromossomo:
     aptidao = 0
     
     def crossover(self, mae):
-        filho = CromossomoFactory().build()
-        filho.genes = self.genes
+        genes = [0 for x in range(20)]
         for _ in range(0, 10): #10 trocas
             n_troca = randrange(1, 19) #Não troca-se o primeiro nem o último
-            filho.genes[n_troca] = mae.genes[n_troca]
-            #print(filho.genes[n_troca])
-            #print(mae.genes[n_troca])
+            genes[n_troca] = mae.genes[n_troca]
+        for i in range(0,20):
+            if(genes[i] == 0):
+                genes[i] = self.genes[i]
 
-        return filho
+        return genes
 
 
 class CromossomoFactory:
