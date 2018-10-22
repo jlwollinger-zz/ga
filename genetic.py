@@ -69,15 +69,11 @@ def crossover(populacao):
         pai = populacao[i]
         mae = populacao[randrange(0, 10)]
         filho1 = Cromossomo()
-        filho1.genes = pai.crossover(mae) #TODO: filho está ficanco igual ao pai. Não consegui descobrir ainda o porque
-        #print(filho1.genes)
-        
-        #print(pai.genes)
-        
+        filho1.genes = pai.crossover(mae) 
+
         filho2 = Cromossomo()
         filho2.genes = mae.crossover(pai)
-        #print(filho2.genes)
-        #print(mae.genes)
+        
         populacao[i + 10] = filho1
         populacao[i + 11] = filho2
 
