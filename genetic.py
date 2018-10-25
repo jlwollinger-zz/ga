@@ -45,7 +45,7 @@ def fitness(populacao):
         for i in range(0, 20):
             cromossomoIterado.genes[ULTIMO_GENE] = cromossomoIterado.genes[i] #o último tem que ser igual ao primeiro para fechar o ciclo
             for j in range(0, 20):
-                distancias[i][j] = cromossomoIterado.genes[i] - cromossomoIterado.genes[j] #calcula a distancia e armazena na matriz
+                distancias[i][j] = (cromossomoIterado.genes[i] - cromossomoIterado.genes[j])  ** 2#calcula a distancia e armazena na matriz
 
         distanciaCromossomo = [0 for x in range(20)] #inicia o array de distancias do cromossomo
         for i in range(0,20):
