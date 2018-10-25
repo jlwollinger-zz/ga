@@ -5,6 +5,7 @@ from cromossomo import CromossomoFactory
 from random import randrange
 from matplotlib import pyplot as plt
 from matplotlib.path import Path
+import matplotlib.patches as mpatches
 
 tamanhoPopulacao = 20
 populacao = []
@@ -34,8 +35,9 @@ def main():
     print("Melhor custo: ", populacao[0].aptidao)
     print("Melhor genes:", populacao[0].genes)
 
-    plt.plot(populacao[0].genes)#, '-ok') #TODO: Este é o gráfico certo? não achei o ideal
-    plt.show()
+    gerarGrafico(populacao[0].genes)
+    #plt.plot((populacao[0].genes), 'go-') #TODO: Este é o gráfico certo? não achei o ideal
+    #plt.show()
 
 
 def fitness(populacao):
@@ -92,7 +94,42 @@ def mutacao(populacao):
             populacao[i].genes[geneY] = valor_a_trocar #Realiza a troca
     return populacao
 
+def gerarGrafico(genes):
+    fig, ax = plt.subplots()
 
+    path_data = [
+        (Path.MOVETO, (genes[0], 1)),
+        (Path.CURVE4, (genes[1], 2)),
+        (Path.CURVE4, (genes[2], 3)),
+        (Path.CURVE4, (genes[3], 4)),
+        (Path.LINETO, (genes[4], 5)),
+        (Path.CURVE4, (genes[5], 6)),
+        (Path.CURVE4, (genes[6], 7)),
+        (Path.CURVE4, (genes[7], 8)),
+        (Path.CURVE4, (genes[8], 9)),
+        (Path.LINETO, (genes[9], 10)),
+        (Path.CURVE4, (genes[10], 11)),
+        (Path.CURVE4, (genes[11], 10)),
+        (Path.CURVE4, (genes[12], 9)),
+        (Path.CURVE4, (genes[13], 8)),
+        (Path.CURVE4, (genes[14], 7)),
+        (Path.CURVE4, (genes[15], 6)),
+        (Path.LINETO, (genes[16], 5)),
+        (Path.CURVE4, (genes[17], 4)),
+        (Path.CURVE4, (genes[18], 3)),
+        (Path.CURVE4, (genes[19], 2)),
+        (Path.CLOSEPOLY, (genes[0], 1)),
+        ]
+    codes, verts = zip(*path_data)
+    path = Path(verts, codes)
 
+    # plot control points and connecting lines
+    x, y = zip(*path.vertices)
+    line, = ax.plot(x, y, 'go-')
 
-main()
+    ax.grid()
+    ax.axis('equal')
+    plt.show()
+
+if __name__ == "__main__":
+    main()
